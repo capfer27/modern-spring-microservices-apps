@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.6</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.capfer.microservices.demo</groupId>
+	<artifactId>microservices-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>microservices-demo</name>
+	<description>Microservices Demo project for Spring Boot</description>
+    <packaging>pom</packaging>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+        <developer>
+            <id>carl</id>
+            <name>Carlos Pereira Fernandes</name>
+            <email>capfer27@gmail.com</email>
+            <roles>
+                <role>Software Developer</role>
+            </roles>
+        </developer>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+
+	<properties>
+		<java.version>21</java.version>
+        <spring-boot.version>3.5.6</spring-boot.version>
+        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+	</properties>
+
+    <!-- Define all the dependencies without downloading them. Since this is the main pom file. -->
+    <!-- Therefore, it's also important to manage all version in one place. -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+	<build>
+        <plugins>
+            <!-- Sets the java compiler version for our project -->
+            <!-- By default, maven uses java 1.6 for source and target settings. Therefore,
+                    we need to tell it to the appropriate version we desire.-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <!-- Starting from java 9, we use the release property to replace the <source /> and <target /> properties. -->
+                    <release>21</release>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <!-- Responsible for running, create build infos,
+                 start apps prior to running integration tests and also creates docker images. -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+	</build>
+
+</project>
