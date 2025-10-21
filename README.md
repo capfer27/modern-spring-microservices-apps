@@ -11,3 +11,7 @@
 ## **График зависимости микросервисов**
 
 ![img_2.png](img_2.png)
+
+twitter-Kafka-service:
+ - Get the stream data from twitter and store it on kafka topic
+ - Получить потоковые данные из Twitter и сохранить их в топике в Kafka.

@@ -6,4 +6,14 @@ twitter-kafka-service:
     - Spring
     - Kafka
     - ElasticSearch
+    - elon
+    - mask
+    - trump
   welcome-message: Hello, Microservices!
+
+#twitter-config:
+#  debug: true
+#  oauth-consumerKey: 8XmIueap8bRWl4SVlxDrjwuSt
+#  oauth-consumerSecret: vdr2BATgb95zN7lH2JpqFETSbxS5qzEIkiUT1hOUMHQHFElfMF
+#  oauth-accessToken: 1980307216176492548-HADxPdFZZrznUlPFdZTH8xZn7DCSyF
+#  oauth-accessTokenSecret: ZyQC8rsF0ouxxF9NY6xvn8hBUdHfATLkdGFqIpSJi4qrO
