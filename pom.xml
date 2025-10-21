@@ -14,6 +14,9 @@
 	<name>microservices-demo</name>
 	<description>Microservices Demo project for Spring Boot</description>
     <packaging>pom</packaging>
+    <modules>
+        <module>twitter-kafka-service</module>
+    </modules>
 	<url/>
 	<licenses>
 		<license/>
@@ -39,6 +42,9 @@
 		<java.version>21</java.version>
         <spring-boot.version>3.5.6</spring-boot.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <twitter4j-stream.version>4.0.7</twitter4j-stream.version>
+        <lombok.version>1.18.42</lombok.version>
+<!--        <logback.version>1.5.19</logback.version>-->
 	</properties>
 
     <!-- Define all the dependencies without downloading them. Since this is the main pom file. -->
@@ -55,7 +61,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
-                <scope>test</scope>
+<!--                <scope>test</scope>-->
                 <exclusions>
                     <exclusion>
                         <groupId>org.junit.vintage</groupId>
@@ -63,6 +69,21 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+
+            <dependency>
+                <groupId>org.twitter4j</groupId>
+                <artifactId>twitter4j-stream</artifactId>
+                <version>${twitter4j-stream.version}</version>
+            </dependency>
+
+            <!-- Scope provided is used for compile-only tools which are not required at runtime.  -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -78,6 +99,13 @@
                 <configuration>
                     <!-- Starting from java 9, we use the release property to replace the <source /> and <target /> properties. -->
                     <release>21</release>
+
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
@@ -89,6 +117,15 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
