@@ -9,8 +9,11 @@ import java.util.List;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "twitter-kafka-service")
-public class TwitterToKafkaConfig
-{
+public class TwitterToKafkaConfig {
     private List<String> twitterKeywords;
     private String welcomeMessage;
+    private Boolean enableMockTweets;
+    private Long mockSleepMs;
+    private Integer mockMinTweetLength;
+    private Integer mockMaxTweetLength;
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import twitter4j.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,5 +39,26 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
         LOGGER.info(Arrays.toString(twitterKeywords.toArray(new String[]{})));
         LOGGER.info(twitterToKafkaConfig.getWelcomeMessage());
         streamRunner.start();
+        //logTweets();
+    }
+
+    @Deprecated(forRemoval = true)
+    public void logTweets() throws TwitterException {
+        // getTweets example
+        //--------------------------------------------------
+        Twitter twitter = new TwitterFactory().getInstance();
+        final TwitterV2 v2 = TwitterV2ExKt.getV2(twitter);
+        final TweetsResponse tweets = v2.getTweets(
+                new long[]{1519966129946791936L},
+                V2DefaultFields.mediaFields, null, null, "attachments", null, "attachments.media_keys");
+        LOGGER.info("tweets = {}", tweets);
+
+
+        //--------------------------------------------------
+        // getUsers example
+        //--------------------------------------------------
+        final long twitterDesignId = 87532773L;
+        final UsersResponse users = v2.getUsers(new long[]{twitterDesignId}, null, null, "");
+        LOGGER.info("users = {}", users);
     }
 }

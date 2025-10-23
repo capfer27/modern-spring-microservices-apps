@@ -45,6 +45,9 @@
         <twitter4j-stream.version>4.0.7</twitter4j-stream.version>
         <lombok.version>1.18.42</lombok.version>
 <!--        <logback.version>1.5.19</logback.version>-->
+        <apache.httpclient.version>4.5.14</apache.httpclient.version>
+        <json.version>20250517</json.version>
+        <faker.version>1.0.2</faker.version>
 	</properties>
 
     <!-- Define all the dependencies without downloading them. Since this is the main pom file. -->
@@ -82,6 +85,31 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.takke</groupId>
+                <artifactId>jp.takke.twitter4j-v2</artifactId>
+                <version>1.4.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache.httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${json.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+            <dependency>
+                <groupId>com.github.javafaker</groupId>
+                <artifactId>javafaker</artifactId>
+                <version>${faker.version}</version>
             </dependency>
 
         </dependencies>
